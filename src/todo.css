@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Outfit:wght@100..900&family=Quicksand:wght@300..700&display=swap');
+@layer reset, layout, inputComp;
+:root{
+    --box-shadow:5px 5px 5px rgba(00,00,00,0.05); 
+    --primary-color:#3f4ef4;
+    --wh:#fff; 
+}
+        
+    
+@layer reset{
+    *{margin:0; padding:0; box-sizing:border-box;}
+    body{min-height:100%; background:#e9ecef; font-family: "Nanum Gothic", sans-serif; color:#666}
+    input{font-size:16px;  border:none; color:#333; background:transparent;}
+    input:focus{outline:none;}
+    button{background:transparent; outline:none; border:none; font:inherit; user-select: none; cursor:pointer; white-space:nowrap}
+    li{list-style-type: none;}
+    strong, em{font-style:normal; }
+    
+}
+
+@layer layout{
+    #root{width:100%; color:#333} 
+    .wrap{width:80%; margin:30px auto 50px; }
+    .title{margin-bottom:30px; font-weight:700; text-align:center; font-size:28px;  font-family: "Quicksand", sans-serif; color:#444}
+    .input-container{margin-bottom:20px; width:100%; display:flex; gap:10px;}
+    .list-container .done{margin-top:40px}
+    .list-container:has(.to-do .to-do-list:empty) .done{margin-top:0}
+    .list-container .done .item{opacity:0.5}
+    .to-do-list{display:flex; flex-direction: column; gap:13px}
+    .to-do-list .item{
+        --gap:5px;
+        display:flex; box-shadow:var( --box-shadow); border-radius:8px; background:#fff; padding:18px 14px; align-items:center; gap:var(--gap)
+    }
+    .item > *{flex:0 0 auto; user-select: none;}
+    .item .done-check{position:relative; display:inline-block; }
+    .item .done-check input[type='checkbox']{position:absolute; width:100%; height:100%; background:transparent; opacity:0}
+    .item .do-text{flex-grow:1; word-break: break-all; min-width:0; flex-basis:calc(100% - 24px - 20px - 20px - (var(--gap)* 2))}
+    .item .do-text p{min-width:0; font-size:14px; font-weight:400}
+    .done-title{font-size:14px; margin-bottom:20px}
+}
+
+@layer inputComp{
+    .input-container{
+        input{background:#fff; border-radius:99px; padding:10px 15px; font-size:14px; line-height:19px; height:45px; flex-grow:1}
+        .add-handler{width:42px; aspect-ratio: 1/1; background:var( --primary-color); border-radius:50%; color:var(--wh); align-self:center }
+    }
+}
